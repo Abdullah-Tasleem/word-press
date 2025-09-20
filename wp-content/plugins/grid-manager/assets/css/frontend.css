@@ -1,0 +1,90 @@
+/* Grid Manager – frontend styles */
+
+.gm-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--gm-columns, 3), minmax(0, 1fr));
+  gap: var(--gm-gap, 16px);
+  align-items: stretch;
+  grid-auto-flow: dense; /* pack items tightly to reduce gaps */
+}
+
+/* Responsive columns */
+@media (max-width: 640px) {
+  .gm-grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 641px) and (max-width: 960px) {
+  .gm-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.gm-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  transition: transform .2s ease, box-shadow .2s ease;
+  height: 100%;
+}
+
+.gm-link {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.gm-media {
+  aspect-ratio: var(--gm-aspect-ratio, 16 / 9); /* matches inline style from shortcode */
+  background: #f5f7fa;
+  overflow: hidden;
+}
+
+.gm-media img,
+.gm-media--placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gm-media--placeholder {
+  background: repeating-linear-gradient(
+    45deg,
+    #f1f3f5,
+    #f1f3f5 10px,
+    #e9ecef 10px,
+    #e9ecef 20px
+  );
+}
+
+.gm-title {
+  margin: .85rem 1rem 1rem;
+  font-size: 1rem;
+  line-height: 1.35;
+  font-weight: 600;
+  display: none; /* hidden by default to match visual-only cards */
+}
+
+.gm-card:hover,
+.gm-card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.gm-link:focus {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gm-card { transition: none; }
+}
+
+.gm-row {
+  display: flex;
+  align-items: flex-start; /* Align images to the top */
+}
+.gm-col-70 img { height: 400px; width: 100%; object-fit: cover; }
+.gm-col-30 img { height: 200px; width: 100%; object-fit: cover; }

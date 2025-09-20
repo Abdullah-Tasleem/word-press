@@ -1,0 +1,25 @@
+.save-product-btn {
+    background: #222;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.save-product-btn:hover {
+    background: #000;
+}
+
+.saved-products-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.saved-products-list li {
+    margin: 8px 0;
+}
