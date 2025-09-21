@@ -168,14 +168,32 @@ class Save_Product
             return '<p>No saved products yet.</p>';
         }
 
-        $html = '<div class="woocommerce columns-4">';
+    $html = '<div class="gm-saved-products-row" style="display:flex;flex-wrap:wrap;gap:3.33%;justify-content:flex-start;width:100%;">';
         foreach ($saved as $pid) {
-            $post_object = get_post($pid);
-            if ($post_object) {
+            $product = wc_get_product($pid);
+            if ($product) {
+                $post_object = get_post($pid);
                 setup_postdata($GLOBALS['post'] = &$post_object);
-                ob_start();
-                wc_get_template_part('content', 'product');
-                $html .= ob_get_clean();
+                $review_html = function_exists('wc_get_rating_html') ? wc_get_rating_html($product->get_average_rating(), $product->get_rating_count()) : '';
+                $price_html = $product->get_price_html();
+                $add_to_cart = '<form class="cart" method="post" enctype="multipart/form-data">'
+                    . '<button type="submit" class="button add_to_cart_button" name="add-to-cart" value="' . esc_attr($pid) . '">' . esc_html__('Add to cart', 'woocommerce') . '</button>'
+                    . '</form>';
+                $remove_btn = '<button type="button" class="save-product-btn" data-productid="' . esc_attr($pid) . '" style="margin-top:8px;">❌ Remove from Saved</button>';
+                $msg_box = '<div class="save-product-message" style="margin-top:8px;color:green;font-weight:500;"></div>';
+                $img_html = $product->get_image();
+                $title_html = '<h2 class="woocommerce-loop-product__title">' . esc_html($product->get_name()) . '</h2>';
+                $html .= '<div class="gm-saved-product" style="flex:0 0 30%;max-width:30%;border:1px solid #eee;padding:16px;margin-bottom:18px;border-radius:8px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;">'
+                    . $img_html
+                    . $title_html
+                    . $review_html
+                    . '<div class="gm-center-actions" style="display:flex;flex-direction:column;align-items:center;width:100%;margin-top:12px;">'
+                        . $price_html
+                        . $add_to_cart
+                        . $remove_btn
+                        . $msg_box
+                    . '</div>'
+                    . '</div>';
             }
         }
         wp_reset_postdata();

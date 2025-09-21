@@ -1,3 +1,4 @@
+
 .save-product-btn {
     background: #222;
     color: #fff;
@@ -5,6 +6,7 @@
     border: none;
     cursor: pointer;
     margin-top: 10px;
+    margin-left: 12px; /* Added left margin for product detail page */
     border-radius: 4px;
     font-size: 14px;
     transition: background 0.3s ease;
