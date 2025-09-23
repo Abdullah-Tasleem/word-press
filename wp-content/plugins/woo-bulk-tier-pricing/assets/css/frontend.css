@@ -1,0 +1,7 @@
+.wcbtp-wrapper { margin: 16px 0 24px; }
+.wcbtp-wrapper h3 { margin-bottom: 8px; }
+table.wcbtp-tier-table { width: 100%; border-collapse: collapse; }
+table.wcbtp-tier-table th, table.wcbtp-tier-table td { padding: 8px 10px; border-bottom: 1px solid #eee; }
+table.wcbtp-tier-table tr.wcbtp-highlight { background: #f3f8ff; }
+table.wcbtp-tier-table tr td.wcbtp-unit-price { font-weight: 600; white-space: nowrap; }
+.wcbtp-note { font-size: 12px; color: #666; }
