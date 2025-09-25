@@ -1,0 +1,142 @@
+/* front-end */
+/* Make products sit to the right of the sidebar */
+.woocommerce .products,
+.woocommerce ul.products {
+  clear: none !important; /* override theme's clear: both; */
+}
+
+/* If the plugin is outputting inline width="100%", force it back */
+#wc-apf-wrapper {
+  width: 25% !important;
+  float: left;
+  margin-right: 30px;
+  box-sizing: border-box;
+}
+
+.woocommerce ul.products {
+  width: calc(75% - 30px);
+  float: right;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 18px;
+  box-sizing: border-box;
+}
+/* #wc-apf-wrapper {
+  float: left;
+  width: 25%; 
+  min-width: 220px;
+  max-width: 350px;
+  margin-right: 0; 
+  box-sizing: border-box;
+} */
+#wc-apf-wrapper .wc-apf-block {
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+  border-radius: 3px;
+}
+#wc-apf-wrapper h4 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+#wc-apf-wrapper ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#wc-apf-wrapper ul li {
+  margin-bottom: 6px;
+}
+#wc-apf-wrapper ul.colors li label {
+  width: 24px;
+  height: 24px;
+  display: block;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #ccc inset;
+}
+
+/* .woocommerce ul.products {
+  width: 75%;
+  float: right;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 18px;
+  box-sizing: border-box;
+} */
+
+.woocommerce ul.products li.product {
+  margin: 0;
+  width: 100%;
+  float: none;
+}
+
+body.loading .woocommerce ul.products {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* admin */
+.wc-apf-sortable {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 400px;
+}
+.wc-apf-sortable li {
+  background: #fdfdfd;
+  padding: 10px 45px 10px 30px;
+  margin: 0 0 4px;
+  border: 1px solid #ddd;
+  cursor: move;
+  position: relative;
+}
+.wc-apf-sortable li .dashicons {
+  position: absolute;
+  left: 8px;
+  top: 9px;
+}
+.switch {
+  position: absolute;
+  right: 10px;
+  top: 7px;
+}
+.switch input {
+  display: none;
+}
+.slider {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+  background: #ccc;
+  border-radius: 34px;
+}
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+#wc-apf-max-price {
+  margin-bottom: 10px;
+}
+input:checked + .slider {
+  background: #2ecc71;
+}
+input:checked + .slider:before {
+  transform: translateX(16px);
+}
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
