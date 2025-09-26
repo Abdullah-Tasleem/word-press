@@ -1,0 +1,4 @@
+.wcasc-settings .form-table th { width: 260px; }
+/* Optional: ensure fields span full width */
+#wcasc_products_field .select2-container,
+#wcasc_categories_field .select2-container { max-width: 520px; }

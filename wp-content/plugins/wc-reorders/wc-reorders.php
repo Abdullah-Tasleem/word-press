@@ -37,6 +37,7 @@ final class WCR_Reorders
         register_activation_hook(__FILE__, [__CLASS__, 'activate']);
         register_deactivation_hook(__FILE__, [__CLASS__, 'deactivate']);
         register_uninstall_hook(__FILE__, [__CLASS__, 'uninstall']);
+        require_once plugin_dir_path(__FILE__) . 'class-wcr-reorders-ajax.php';
     }
 
     public static function activate()
