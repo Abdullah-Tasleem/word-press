@@ -4,6 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Get plugin settings array.
  */
+
 function wcasc_get_settings() {
 	$defaults = array(
 		'enable_sidebar'          => 1,
@@ -34,6 +35,7 @@ function wcasc_get_setting( $key, $default = null ) {
 	$all = wcasc_get_settings();
 	return isset( $all[ $key ] ) ? $all[ $key ] : $default;
 }
+
 
 /**
  * Format currency using WooCommerce.
