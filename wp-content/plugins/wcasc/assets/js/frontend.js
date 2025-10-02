@@ -110,16 +110,12 @@
   }
 
   function openSidebar() {
-    const $overlay = $("#wcasc-overlay");
-    const $sidebar = $("#wcasc-sidebar-cart");
+    $("#wcasc-overlay").removeClass("is-open");
+    $("#wcasc-sidebar-cart").attr("aria-hidden", "true").removeClass("is-open");
+    $("body").removeClass("wcasc-open");
 
-    // already open? → nothing to do
-    if ($sidebar.hasClass("is-open")) {
-      return;
-    }
-
-    $overlay.addClass("is-open");
-    $sidebar.attr("aria-hidden", "false").addClass("is-open");
+    $("#wcasc-overlay").addClass("is-open");
+    $("#wcasc-sidebar-cart").attr("aria-hidden", "false").addClass("is-open");
     $("body").addClass("wcasc-open");
   }
 
@@ -484,47 +480,5 @@
       sidebarWasOpen = false;
     }
   );
-  /******************************************************************
-   * SIMPLE HORIZONTAL “CAROUSEL” FOR SIDEBAR RECOMMENDATIONS
-   ******************************************************************/
-  function initSidebarRecoCarousel() {
-    var $track = $("#wcasc-recos-track");
-    if (!$track.length) return;
 
-    // keep index on data-attr
-    var $items = $track.find(".wcasc-reco");
-    var current = 0;
-
-    function goTo(i) {
-      // clamp
-      i = Math.max(0, Math.min(i, $items.length - 1));
-      current = i;
-
-      $items.removeClass("active").eq(i).addClass("active");
-      // scroll into view (CSS scroll-snap set on track)
-      $items.get(i).scrollIntoView({ behavior: "smooth", inline: "start" });
-    }
-
-    $(document)
-      .off("click.wcascReco") // avoid duplicates
-      .on("click.wcascReco", ".wcasc-recos-prev", function () {
-        goTo(current - 1);
-      })
-      .on("click.wcascReco", ".wcasc-recos-next", function () {
-        goTo(current + 1);
-      });
-
-    // reset to first slide on (re)init
-    goTo(0);
-  }
-
-  /* run on first load */
-  initSidebarRecoCarousel();
-
-  /* run again every time Woo fragments
-   replace the sidebar markup -----------------------------------*/
-  $(document.body).on(
-    "wc_fragments_loaded wc_fragments_refreshed wc_fragment_refreshed",
-    initSidebarRecoCarousel
-  );
 })(jQuery);

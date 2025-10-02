@@ -1,0 +1,100 @@
+/* ===========================================================
+   Scheduled Publisher – Admin styles
+   =========================================================== */
+
+/* --- GENERAL WRAPPER -------------------------------------- */
+.sp-wrap{
+	--sp-primary: #007cba;      /* WP brand blue */
+	--sp-danger:  #b32d2e;      /* WP brand red  */
+	--sp-success: #46b450;      /* WP green      */
+	--sp-warn:    #dba617;      /* Orange badge  */
+}
+.sp-wrap h2.title{ margin-top:40px }
+
+/* --- TOOLBAR ---------------------------------------------- */
+.sp-toolbar{
+	margin: 15px 0 25px;
+	display:flex;
+	gap:12px;
+	align-items:center;
+}
+.sp-toolbar .button span{
+	margin-right:4px;
+	vertical-align:text-bottom;
+}
+
+/* --- FORM TABLE (Add rows) -------------------------------- */
+#sp-schedule-rows{
+	width:100%;
+	border-collapse:separate;
+	border-spacing:0;
+	margin-bottom:20px;
+}
+#sp-schedule-rows thead th{
+	background:#f6f7f7;
+	font-weight:600;
+	padding:10px 8px;
+	text-align:left;
+	border-bottom:1px solid #dcdcde;
+}
+#sp-schedule-rows tbody td{
+	padding:8px;
+	vertical-align:top;
+}
+#sp-schedule-rows tbody tr:nth-child(even){background:#fbfbfc;}
+#sp-schedule-rows tbody tr:hover{background:#fff;}
+#sp-schedule-rows input[type="datetime-local"]{min-width:190px}
+#sp-schedule-rows select{min-width:140px}
+#sp-schedule-rows .column-tools{width:60px;text-align:center}
+
+/* add-row (+) and remove-row (trash) icons */
+.sp-add,
+.sp-remove-row{
+	cursor:pointer;
+	font-size:20px;
+	padding:5px;
+	border-radius:3px;
+}
+.sp-add{color:var(--sp-primary)}
+.sp-add:hover{background:#e5f4fa}
+.sp-remove-row{color:var(--sp-danger)}
+.sp-remove-row:hover{background:#fbeaea}
+
+/* --- LIST TABLE (Queued / Completed list) ----------------- */
+#sp-schedule-table thead th{
+	text-align:left;
+	padding:10px 8px;
+	background:#f0f0f1;
+	border-bottom:1px solid #dcdcde;
+}
+#sp-schedule-table tbody td{
+	padding:8px 8px;
+}
+#sp-schedule-table tbody tr:nth-child(even){background:#fdfdfd}
+#sp-schedule-table tbody tr:hover{background:#fff}
+/* column widths */
+#sp-schedule-table .column-tools{width:165px}
+#sp-schedule-table .column-date{width:160px}
+
+/* --- STATUS BADGES ---------------------------------------- */
+.sp-badge{
+	display:inline-block;
+	padding:2px 8px;
+	border-radius:2px;
+	font-size:11px;
+	font-weight:600;
+	color:#fff;
+	text-transform:uppercase;
+	letter-spacing:.2px;
+}
+.sp-badge.queued   {background:var(--sp-warn)}
+.sp-badge.completed{background:var(--sp-success)}
+
+/* --- ACTION BUTTONS --------------------------------------- */
+#sp-schedule-table .button{margin-right:4px}
+
+/* --- MAKE SMALL BUTTONS LOOK NICE ------------------------- */
+.wp-core-ui .button-small{
+	padding:2px 8px;
+	line-height:26px;
+}

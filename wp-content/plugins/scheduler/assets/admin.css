@@ -1,0 +1,14 @@
+#sqv-forms-table th,
+#sqv-forms-table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#sqv-forms-table input,
+#sqv-forms-table select {
+    width: 95%;
+}
+
+.sqv-form-row td {
+    padding: 8px;
+}
